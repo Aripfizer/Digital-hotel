@@ -5,7 +5,8 @@ const isPublicRoute = createRouteMatcher([
   "/sign-up",
   "/",
   "hotel-details/:id",
-  "/api/uploadthing"
+  "/api/uploadthing",
+  "/icons/hotel-logo.svg",
 ]);
 
 export default clerkMiddleware((auth, request) => {

@@ -6,6 +6,8 @@ import { Button } from "../button";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import SearchInput from "@/components/SearchInput";
+import { ModeToggle } from "@/components/theme-toggle";
+import NavMenu from "@/components/NavMenu";
 
 const Navbar = () => {
   const router = useRouter();
@@ -27,14 +29,24 @@ const Navbar = () => {
         </div>
         <SearchInput />
         <div className="gap-3 flex items-center">
+          <div>
+            <ModeToggle />
+            <NavMenu />
+          </div>
           <UserButton afterSignOutUrl="/" />
           {!userId && (
             <>
-              <Button onClick={() => router.push("/sign-in")} size="sm" variant="outline">
+              <Button
+                onClick={() => router.push("/sign-in")}
+                size="sm"
+                variant="outline"
+              >
                 Sign In
               </Button>
 
-              <Button onClick={() => router.push("/sign-up")} size="sm">Sign up</Button>
+              <Button onClick={() => router.push("/sign-up")} size="sm">
+                Sign up
+              </Button>
             </>
           )}
         </div>

@@ -43,14 +43,14 @@ model Hotel {
 }
 
 model Room {
-  id                    String @id @default(uuid())
+  id                    String  @id @default(uuid())
   title                 String
-  description           String @db.LongText
-  bedCount              Int @default(0)
-  guestCount            Int @default(0)
-  bathroomCount         Int @default(0)
-  kingBed               Int @default(0)
-  queenBed              Int @default(0)
+  description           String  @db.LongText
+  bedCount              Int     @default(0)
+  guestCount            Int     @default(0)
+  bathroomCount         Int     @default(0)
+  kingBed               Int     @default(0)
+  queenBed              Int     @default(0)
   image                 String
   breakFastPrice        Int
   roomPrice             Int
@@ -65,7 +65,7 @@ model Room {
   airCondition          Boolean @default(false)
   soundProofed          Boolean @default(false)
 
-  hotel                 Hotel @relation(fields: [hotelId], references: [id])
+  hotel                 Hotel   @relation(fields: [hotelId], references: [id])
   hotelId               String
 
   bookings              Booking[]
@@ -74,7 +74,7 @@ model Room {
 }
 
 model Booking {
-  id                    String @id @default(uuid())
+  id                    String   @id @default(uuid())
   userName              String
   userId                String
   hotelOwnerId          String
@@ -84,15 +84,15 @@ model Booking {
   currency              String
   totalPrice            Int
   paymentStatus         Boolean
-  paymentIntentId       String @unique
+  paymentIntentId       String   @unique
   bookedAt              DateTime @default(now()) @map("booked_at")
 
 
-  hotel                 Hotel @relation(fields: [hotelId], references: [id])
+  hotel                 Hotel    @relation(fields: [hotelId], references: [id])
   hotelId               String
  
-  room                  Room  @relation(fields: [roomId], references: [id])
-  roomId                String?
+  room                  Room     @relation(fields: [roomId], references: [id])
+  roomId                String
 
   @@index([hotelId, roomId])
 

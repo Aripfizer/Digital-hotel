@@ -3,6 +3,8 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/ui/layout/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
+import Container from "@/components/Container";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Digital Hotel",
@@ -32,9 +34,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Toaster />
             <main>
               <Navbar />
-              {children}
+              <Container>{children}</Container>
             </main>
           </ThemeProvider>
         </body>
